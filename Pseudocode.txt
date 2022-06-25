@@ -12,7 +12,7 @@ getAllRelatedInfo = "/allrelated.json"
 #Used to get the drug associated with itself (ingredient)
 getRelatedByType = "/related.json?tty=IN"
 
-#List of all ingredients that are classified as opioids with RxNorm code (excui)
+#List of all ingredients that are classified as opioids with RxNorm code (rexcui)
 alfentanil = "480"
 alphaprodine = "594"
 benzhydrocodone = "2001352"
@@ -60,16 +60,16 @@ tetrapeptide = "1986806"
 tilidine = "10597"
 tramadol = "10689"
 
-drugs is equal to all ingredients
+drugs array is equal to all ingredients in a list
 for every ingredient in drugs 
     get dataframe with the drug for that ingredient
     get dataframe with all drugs that have that ingredient
     add both dataframes to the df_opioid dataframe that holds all drugs 
     go to next drug
 
-Export dataframe with all opioid drugs as "New_Complete_Opioids_List.xlsx"
 #Do not need a column with indexes because excel already has this 
 index is false
+Export dataframe with all opioid drugs as "New_Complete_Opioids_List.xlsx"
 
 Retrive original opioid list as df_list
 #Reduce the dataframe to just the data is usable to us
@@ -77,10 +77,10 @@ df_list columns are rxcui, name, and tty
 df_opioid columns are rxcui, name, and tty
 
 #same drugs are drugs that are found in the original List
-Create new dataframe that holds same drugs as same_drug
+Create new empty dataframe as same_drug
     
 #new drugs are not found in the original List
-Create new dataframe that will hold new drugs as new_drug
+Create new empty dataframe that will hold new drugs as new_drug
 
 for every code in the rxcui column of the original opioid dataframe
     get the name of the drug that corresponds to the code (rxcui)
@@ -106,15 +106,18 @@ for every code in the orginal list
 Connect absent drug dataframe columns to the dataframe that holds same drug and new drug columns
 save as not_found dataframe
 
+#Do not need a column with indexes because excel already has this 
+index is false
 Export as "Opioids_Comparison.xlsx"
 
-create df_status datframe
+#status will hold the history of the drug (Active or Obsolete)
+create new empty datframe as df_status 
 
 for every code in the not found dataframe 
     get the rxcui history status
     add data to status dataframe
 
-#To get a dataframe with rxcui, name, and status
+#To get a new dataframe with rxcui, name, and status
 #merging on rxcui provides a dataframe with inforamtion farom both dataframes
 #and matches the data based on having the same rxcui
 Merge absent drug data frame and the not found data frame on the rxcui
