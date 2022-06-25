@@ -62,9 +62,12 @@ tramadol = "10689"
 
 drugs array is equal to all ingredients in a list
 for every ingredient in drugs 
-    get dataframe with the drug for that ingredient
-    get dataframe with all drugs that have that ingredient
-    add both dataframes to the df_opioid dataframe that holds all drugs 
+    using base url + drug rxcui + getRelatedByType
+        get dataframe with the drug for that ingredient
+    using base url + drug rxcui + getAllRelatedInfo
+        get dataframe with all drugs that have that ingredient
+    #df_opioid dataframe holds all drugs
+    add both dataframes to the df_opioid dataframe
     go to next drug
 
 #Do not need a column with indexes because excel already has this 
@@ -88,6 +91,8 @@ for every code in the rxcui column of the original opioid dataframe
 
     if it is in the list add the code and name to same drug dataframe
     else add the rxcui and name to the new drug dataframe
+
+    go to next code
 
 #This is to allow to be visally compared
 Connect same drug data frame columns to new drug dataframe columns side by side 
@@ -129,4 +134,7 @@ save as active dataframe
 Filter not found dataframe for just Obsolete drugs
 save as obsolete dataframe
 
-Export active and not found dataframe
+#Do not need a column with indexes because excel already has this 
+index is false
+Export active dataframe as "Status_of_Not_found.xlsx"
+Export not found dataframe as "Active_Not_Found.xlsx"
