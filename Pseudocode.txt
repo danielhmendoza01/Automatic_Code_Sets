@@ -1,0 +1,129 @@
+Import pandas library as pd
+
+#Used for API functions
+RxNorm base url is "https://rxnav.nlm.nih.gov/REST/rxcui/"
+
+#Another version for API functions
+RxNorm base url 2 is "https://rxnav.nlm.nih.gov/REST/"
+
+#RxNorm functions
+#Used to get all drugs
+getAllRelatedInfo = "/allrelated.json"
+#Used to get the drug associated with itself (ingredient)
+getRelatedByType = "/related.json?tty=IN"
+
+#List of all ingredients that are classified as opioids with RxNorm code (excui)
+alfentanil = "480"
+alphaprodine = "594"
+benzhydrocodone = "2001352"
+buprenorphine = "1819"
+butorphanol = "1841"
+codeine = "2670"
+dextromethorphan = "3289"
+dextromoramide = "3290"
+dezocine = "22713"
+dihydrocodeine = "23088"
+diphenoxylate = "3500"
+ethylmorphine = "4166"
+fentanyl = "4337"
+heroin = "3304" 
+hydrocodone = "5489"
+hydromorphone = "3423"
+levomethadone = "236913"
+levopropoxyphene = "6377"
+levorphanol = "6378"
+meptazinol = "6761"
+methadone = "6813"
+methadyl_acetate = "6814"
+morphine = "7052"
+nalbuphine = "7238"
+normethadone = "32009"
+noscapine = "7533"
+oliceridine = "2392230"
+opium = "7676"
+oxycodone = "7804"
+oxycodone_hydrochloride = "82063"
+oxymorphone = "7814"
+papaveretum = "7894"
+paregoric = "32926"
+pentazocine = "8001"
+pethidine = "6754"
+phenazocine = "8119"
+phenoperidine = "8143"
+pholcodine = "33431"
+pirinitramide = "8354"
+propoxyphene = "8785"
+remifentanil = "73032"
+sufentanil = "56795"
+tapentadol = "787390"
+tetrapeptide = "1986806"
+tilidine = "10597"
+tramadol = "10689"
+
+drugs is equal to all ingredients
+for every ingredient in drugs 
+    get dataframe with the drug for that ingredient
+    get dataframe with all drugs that have that ingredient
+    add both dataframes to the df_opioid dataframe that holds all drugs 
+    go to next drug
+
+Export dataframe with all opioid drugs as "New_Complete_Opioids_List.xlsx"
+#Do not need a column with indexes because excel already has this 
+index is false
+
+Retrive original opioid list as df_list
+#Reduce the dataframe to just the data is usable to us
+df_list columns are rxcui, name, and tty
+df_opioid columns are rxcui, name, and tty
+
+#same drugs are drugs that are found in the original List
+Create new dataframe that holds same drugs as same_drug
+    
+#new drugs are not found in the original List
+Create new dataframe that will hold new drugs as new_drug
+
+for every code in the rxcui column of the original opioid dataframe
+    get the name of the drug that corresponds to the code (rxcui)
+    check if its in the orgianl list
+
+    if it is in the list add the code and name to same drug dataframe
+    else add the rxcui and name to the new drug dataframe
+
+#This is to allow to be visally compared
+Connect same drug data frame columns to new drug dataframe columns side by side 
+    
+#The absent drugs are drugs in the orginal list but noe found in the API pulled list
+Create new dataframe for the absemt drugs as absent_drugs
+
+for every code in the orginal list
+    get the name of the drug that corresponds to the code (rxcui)
+    get the tty of the drug that corresponds to the code (rxcui)
+    if code is in the API pulled list 
+        go to next code
+    else add drug rxcui, name, and tty to the absent dataframe
+
+#Now all can be visally compared
+Connect absent drug dataframe columns to the dataframe that holds same drug and new drug columns
+save as not_found dataframe
+
+Export as "Opioids_Comparison.xlsx"
+
+create df_status datframe
+
+for every code in the not found dataframe 
+    get the rxcui history status
+    add data to status dataframe
+
+#To get a dataframe with rxcui, name, and status
+#merging on rxcui provides a dataframe with inforamtion farom both dataframes
+#and matches the data based on having the same rxcui
+Merge absent drug data frame and the not found data frame on the rxcui
+
+
+Filter not found dataframe for just Active drugs
+save as active dataframe
+
+Filter not found dataframe for just Obsolete drugs
+save as obsolete dataframe
+
+Export active and not found dataframe
