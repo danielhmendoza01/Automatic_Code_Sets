@@ -12,14 +12,8 @@ getRelatedByType = "/related.json?tty=IN"
 
 #df_opioid dataframe will hold all opioid drugs
 for every drug in drugs array
-    using base url + drug rxcui + getRelatedByType
-        get dataframe with the drug for that ingredient
-        add dataframes to the df_opioid dataframe
-    using base url + drug rxcui + getAllRelatedInfo
-        get dataframe with all drugs that have that ingredient
-        add dataframes to the df_opioid dataframe
-    go to next drug
+    getAllRelatedInfo
+    getAllRelatedInfo
+    add dataframe to the df_opioid dataframe
 
-#Do not need a column with indexes because excel already has this 
-index is false
-Export dataframe with all opioid drugs as "New_Complete_Opioids_List.xlsx"
+Export df_opioid as "New_Complete_Opioids_List.xlsx"
