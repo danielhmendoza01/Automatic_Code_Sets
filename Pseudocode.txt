@@ -1,34 +1,32 @@
-
 OpioidIngredients = string array /* each array element represents the RxCUI of an opioid ingredient*/
 Generate_Opioid_Medications (OpioidIngredients)
-MedicationList = Data Frame of each drug /* has a RxCUI and Name of drug column with each row a medication*/
-MedicationList = DataFrame()
-Medication = Data Frame of the drug /* the medication that is the opioid ingredient */
-Medication = DataFrame()
+MedicationList = 2D Array of each drug /* has a RxCUI and Name of drug column with each row a different medication*/
+MedicationList = 2D Array 
+Medication = 2D Array of the drug /* the medication that is the opioid ingredient */
+Medication = 2D Array 
 TempMedicationList = Data Frame of each drug /* data frame of all drugs that contain the opioid ingredient */
-TempMedicationList = DataFrame()
+TempMedicationList = 2D Array 
 for each opioid_ingredient in OpioidIngredients
-     Medication = getRelatedByType /* generate one medication that is the opioid_ingredient */
-     TempMedicationList = getAllRelatedInfo /* generates all medications that has the opioid_ingredient */
-     MedicationList = MedicationList + Medication + TempMedicationList /* adds data frames for that opioid ingredient to data frame with all medications */
+     Medication = getRelatedByType /* First include the opioid ingredient  
+     itself as a medication */
+     TempMedicationList = getAllRelatedInfo /* next get all medications 
+     that have the medication (opioid_ingredient) in it */
+     MedicationList = MedicationList + Medication + TempMedicationList 
+     /* Combines the 2D Arrays for that opioid ingredient to one 2D Array 
+     with all medications rxcui and name*/
 
-#each array element represents the RxCUI of an opioid ingredient
-OpioidIngredients = string array 
-Generate_Opioid_Medications (OpioidIngredients)
-#has a RxCUI and Name of drug column with each row a medication
-MedicationList = Data Frame of each drug 
-MedicationList = DataFrame()
-#the medication that is the opioid ingredient */
-Medication = Data Frame of the drug 
-Medication = DataFrame()
-#data frame of all drugs that contain the opioid ingredient
-TempMedicationList = Data Frame of each drug 
-TempMedicationList = DataFrame()
-for each opioid_ingredient in OpioidIngredients
-    #generate one medication that is the opioid_ingredient
-     Medication = getRelatedByType
-     #generates all medications that has the opioid_ingredient
-     TempMedicationList = getAllRelatedInfo 
-     #adds data frames for that opioid ingredient to data frame with all medications
-     MedicationList = MedicationList + Medication + TempMedicationList
+
+/* DEA PDF comes from their controlled substance list*/
+FROM DEA.pdf TO DEA.csv /* Convert the DEA PDF table to csv File */
+deaList = FROM DEA.csv TO 2D Array /* Convert the csv file to a 2D array      
+     with one column being the name and the second being NARC and set equal 
+     to deaList*/
+deaList = When NARC is 'Y' /* reduce 2D array to only the drugs that have 
+     NARC set to 'Y'. 'Y' represents that it is a narcotic */
+For each opioid_ingredient in deaList:
+     ingredientRxcui = findRxcuiByString /* get corresponding RxCUI to      
+     the opioid ingredient */
+     deaList = deaList + RxCUI /* add corresponding RxCUI to ingredient
+return deaList /* Export list of drugs that are opioids with their RxCUI*/
+
 
