@@ -1,0 +1,12 @@
+cff-version: 1.2.0
+message: "If you use this software, please cite it as below."
+authors:
+- family-names: "Mendoza"
+  given-names: "Daniel"
+  orcid: "https://orcid.org/0000-0000-0000-0000"
+title: "A KNOWLEDGE-DRIVEN, GENERALIZALBE AND AUTOMATIC METHOD TO 
+CREATE MEDICATION CODE SETS: OPIOIDS AND ANTIDEPRESSANTS USE CASES"
+version: 1.0.0
+doi: 10.5281/zenodo.1234
+date-released: 2022-07-26
+url: "https://github.com/danielhmendoza01/opioid_list"
