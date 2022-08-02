@@ -1,4 +1,5 @@
-# opioid_list
+# A KNOWLEDGE-DRIVEN, GENERALIZALBE AND AUTOMATIC METHOD TO 
+CREATE MEDICATION CODE SETS: OPIOIDS AND ANTIDEPRESSANTS USE CASES
 ABSTRACT
 Background: Creation and reuse of reliable clinical code sets could accelerate the use of EHR data for research. To support that vision, there is an imperative need for methodologically driven, transparent and automatic approaches to create error-free clinical code sets.
 Objectives: Propose and evaluate an automatic, generalizable, and knowledge-based approach that uses as starting point a correct and complete knowledge base of ingredients (e.g., the US Drug Enforcement Administration Controlled Substance repository list includes fentanyl as an opioid) to create medication code sets (e.g., Abstral is an opioid medication with fentanyl as ingredient). 
