@@ -6,7 +6,7 @@ authors:
   orcid: "https://orcid.org/0000-0002-2495-7080"
 title: "A KNOWLEDGE-DRIVEN, GENERALIZALBE AND AUTOMATIC METHOD TO 
 CREATE MEDICATION CODE SETS: OPIOIDS AND ANTIDEPRESSANTS USE CASES"
-version: 1.34.0
-doi: 10.5281/zenodo.1234
+version: 1.4.0
+doi: 10.5281/zenodo.6951905
 date-released: 2022-07-26
 url: "https://github.com/danielhmendoza01/opioid_list"
