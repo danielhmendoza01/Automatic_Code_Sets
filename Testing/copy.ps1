@@ -1,8 +1,7 @@
 # Define the source paths and destination path
 $source1 = "C:\Users\Daniel\Documents\opiod_list\Atomatic_Code_Sets\RxNorm\Opioid"
 $source2 = "C:\Users\Daniel\Documents\opiod_list\Atomatic_Code_Sets\RxNorm\Antidepressant"
-$destination = "C:\Users\Daniel\Dropbox (ASU)\RxNorm Opioids\RxNorm Paper\Revision 1\Appendices"
-
+$destination = "C:\Users\Daniel\Documents\opiod_list\Atomatic_Code_Sets\RxNorm\Appendices"
 # Define the file names
 $fileNames = "New_Complete_Opioids_List.xlsx", "Same_Opioid_Medications.xlsx", "New_Opioids_Added.xlsx", "Obsolete_Not_Found.xlsx", "Active_Not_Found.xlsx", "New_Complete_Antidepressants_List.xlsx", "Same_Antidepressant_Medications.xlsx", "New_Antidepressant_Added.xlsx","Active_Not_Found_Antidepressant.xlsx"
 
