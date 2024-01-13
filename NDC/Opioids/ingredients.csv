@@ -1,10 +1,10 @@
-Ingredient
+Ingredient,NON-Pain
 alfentanil
 benzhydrocodone
 buprenorphine
 butorphanol
 codeine
-difenoxin
+difenoxin,true
 dihydrocodeine
 diphenoxylate
 fentanyl
@@ -15,7 +15,7 @@ methadone
 meperidine
 morphine
 nalbuphine
-noscapine
+noscapine,true
 oliceridine
 opium
 oxycodone
@@ -24,5 +24,5 @@ pentazocine
 remifentanil
 sufentanil
 tapentadol
-tetrapeptide-15
+tetrapeptide-15,true
 tramadol
